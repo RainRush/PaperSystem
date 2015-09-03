@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>審查者主頁</title>
+    <title>審查者給評</title>
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
@@ -24,7 +24,7 @@
 					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="./review_main.php">首頁</a>
+					</button> <a class="navbar-brand" href="./review_main.php">回主頁</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,68 +75,30 @@
 	<div class="row">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8" align="center">
+		<form class="form-horizontal" role="form" method="post" action="result_given.php">
 			<p style="color:white">_<br>_<br>_<br>_<br>_<br>_</p>
 			<h1 class="text-center">
-				審查者主頁
+				給予論文<?php 
+				$PaperNo = $_GET['PaperNo']; 
+				echo $PaperNo;
+				$_SESSION['PaperNo'] = $PaperNo;
+				?> 意見及結果
 			</h1> 
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>
-							論文編號
-						</th>
-						<th>
-							論文名稱
-						</th>
-						<th>
-							論文作者
-						</th>
-						<th>
-							狀態
-						</th>
-						<th>
-							操作
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-						$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
-						mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
-						mysql_query(" set names utf8 ");
-						mysql_query(" SET CHARACTER SET  'UTF8 '; ");
-						mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
-						mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
-						$GetNo = mysql_query("SELECT * FROM PAPER_ASSIGN WHERE Email_Re = '$Email'");
-						$CountNo1 = mysql_num_rows($GetNo);
-						for($j=0;$j<($CountNo1);$j++){	
-							$ls = mysql_fetch_row($GetNo);
-							$data = mysql_query("SELECT * FROM SUBMIT WHERE PaperNo = '$ls[0]'");
-							$CountNo = mysql_num_rows($data);
-							$result1 = mysql_query("SELECT * FROM REVIEW");
-							for($i=0; $i<($CountNo);$i++){
-								$rs = mysql_fetch_row($data);
-								$rs1 = mysql_fetch_row($result1);
-								echo '<tr class="default">';
-								echo '<td>' . $rs[1] . '</td>';
-								echo '<td>' . $rs[2] . '</td>';
-								echo '<td>' . $rs[4] . '<p style="display:inline"> , </p>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '</td>';
-								if($rs1[2] != NULL){
-								echo '<td>' . $rs1[1] .'</td>';
-								}
-								else{echo '<td>待評</td>';}
-								echo '<td>
-									<button type="submit" class="btn btn-default">下載</button>
-									<a type="button" class="btn btn-default" href="review_result.php?PaperNo='.$rs[1].'">給評</a>
-									</td>';
-								echo '</tr>';
-							}
-						}
-					?>
-					<!--active,success,warning,danger-->
-				</tbody>
-			</table>
+			<p style="color:white">_<br>_</p>
+			<h3>意見</h3>
+			<textarea name="Advice" rows="10" cols="70"></textarea>
+			<p style="color:white">_<br>_</p>
+			<h3>結果</h3>
+			<select name="Result">
+				<option></option>
+				<option value="通過">通過</option>
+				<option value="需修改">需修改</option>
+				<option value="拒絕">拒絕</option>
+			</select>
+			<p style="color:white">_<br>_</p>
+			<button type="submit" class="btn btn-default">提交</button>
+		</form>
 		</div>
 		<div class="col-md-2">
 		</div>
