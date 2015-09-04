@@ -76,7 +76,7 @@
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8" align="center">
-		<form class="form-horizontal" role="form" method="post" action="result_given.php">
+		<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
 			<p style="color:white">_<br>_<br>_<br>_<br>_<br>_</p>
 			<h1 class="text-center">
 				給予論文<?php 
@@ -97,8 +97,20 @@
 				<option value="拒絕">拒絕</option>
 			</select>
 			<p style="color:white">_<br>_</p>
-			<button type="submit" class="btn btn-default">提交</button>
+			<button type="submit" class="btn btn-default" name="assign">提交</button>
 		</form>
+		<?php
+			if(isset($_POST['assign'])){
+				$conn = mysql_connect("localhost", "root", "0000");
+				mysql_select_db("Paper") or die("Unable to connect to the server. Please try again later.");
+				mysql_query(" set names utf8 ");
+				mysql_query(" SET CHARACTER SET  'UTF8 '; ");
+				mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
+				mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
+				$PaperNo = $_SESSION['PaperNo'];
+				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]')");
+			}
+		?>
 		</div>
 		<div class="col-md-2">
 		</div>
