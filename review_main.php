@@ -25,6 +25,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button> <a class="navbar-brand" href="./review_main.php">首頁</a>
+					<a class="navbar-brand" href="./sub_main.php">到投稿者主頁</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -118,18 +119,20 @@
 							for($i=0; $i<($CountNo);$i++){
 								$rs = mysql_fetch_row($data);
 								$rs1 = mysql_fetch_row($result1);
+								$FileName = $rs[3];
+								$FileURL = $rs[4];
 								echo '<tr class="default">';
 								echo '<td>' . $rs[1] . '</td>';
 								echo '<td>' . $rs[2] . '</td>';
-								echo '<td>' . $rs[4] . '<p style="display:inline"> , </p>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '</td>';
+								echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '</td>';
 								if($rs1[2] != NULL){
-								echo '<td>' . $rs1[1] .'</td>';
+									echo '<td>' . $rs1[1] .'</td>';
 								}
 								else{echo '<td>待評</td>';}
 								echo '<td>
-									<button type="submit" class="btn btn-default">下載</button>
 									<a type="button" class="btn btn-default" href="review_result.php?PaperNo='.$rs[1].'">給評</a>
-									</td>';
+									<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>
+									檔名：'.$FileName.'</td>';
 								echo '</tr>';
 							}
 						}

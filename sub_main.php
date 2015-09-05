@@ -25,6 +25,23 @@
 					<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button>--> <a class="navbar-brand" href="./sub_main.php">主頁</a>
+					<?php
+						if ($_SESSION['Email'] != NULL){
+						 	$Email = $_SESSION['Email'];
+						 	$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
+							mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
+							mysql_query(" set names 'utf8' ");
+							mysql_query(" SET CHARACTER SET  'UTF8 '; ");
+							mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
+							mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
+							$GetName = mysql_query("SELECT * FROM USER_INFO WHERE Email = '$Email'");
+							$ls = mysql_fetch_row($GetName);
+							$Role = $ls[6];
+							if($Role == 'Reviewer'){
+								echo '<a class="navbar-brand" href="./review_main.php">回審查者主頁</a>';
+						 	}
+						 }
+					?>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,15 +53,6 @@
 								<?php
 								if ($_SESSION['Email'] != NULL){
 						 			echo "<font color=\"WHITE\">您好，</font>";
-						 			$Email = $_SESSION['Email'];
-						 			$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
-									mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
-									mysql_query(" set names 'utf8' ");
-									mysql_query(" SET CHARACTER SET  'UTF8 '; ");
-									mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
-									mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
-						 			$GetName = mysql_query("SELECT * FROM USER_INFO WHERE Email = '$Email'");
-						 			$ls = mysql_fetch_row($GetName);
 						 			echo "<font color=\"WHITE\">".$ls[1]."</font>";
 						 		}
 						 		else{
@@ -122,11 +130,11 @@
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
 							echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '<p style="display:inline"> , </p>' . $rs[8] . '<p style="display:inline"> , </p>' . $rs[9] .  '<p style="display:inline"> , </p>' . $rs[10] . '</td>';
-							//if($rs1[2] != NULL){
-							//	echo '<td>' . $rs1[1] .'</td>';
-							//}	
-							//else{echo '<td>待評</td>';}
-							echo '<td>待評</td>';
+							if($rs1[2] != NULL){
+								echo '<td>' . $rs1[1] .'</td>';
+							}	
+							else{echo '<td>待評</td>';}
+							//echo '<td>待評</td>';
 							echo '<td>
 								<a type="button" class="btn btn-default" href="./sub_modify.php?PaperNo='.$rs[1].'">更新論文</a>
 								<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>

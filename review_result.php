@@ -101,8 +101,8 @@
 		</form>
 		<?php
 			if(isset($_POST['assign'])){
-				$conn = mysql_connect("localhost", "root", "0000");
-				mysql_select_db("Paper") or die("Unable to connect to the server. Please try again later.");
+				$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
+				mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
 				mysql_query(" set names utf8 ");
 				mysql_query(" SET CHARACTER SET  'UTF8 '; ");
 				mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
