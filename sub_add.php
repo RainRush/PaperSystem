@@ -69,17 +69,6 @@
 				</div>
 				
 			</nav>
-			<!--<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-				<div class="navbar-header">
-					 
-				</div>
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					
-					
-				</div>
-				
-			</nav>-->
 		</div>
 	</div>
 	<div class="row">
@@ -133,7 +122,6 @@
 						<input type="text" class="form-control" id="textfield" name="Author6">
 					</div>
 				</div>
-				<?php
 
 				<div class="form-group" align="center">
 					 
@@ -175,8 +163,7 @@
 									$FileName = $_FILES['File']['name'];
 									echo $FileName;
 									$FileURL = 'upload/'.session_id().'_'. time().'.'.pathinfo($_FILES['File']['name'],PATHINFO_EXTENSION);
-									$FileURL2 = 'upload/'.$FileName.'.'.pathinfo($_FILES['File']['name'],PATHINFO_EXTENSION);
-									mysql_query("INSERT INTO SUBMIT(Email,PaperNo,PaperTitle,FileName,FileURL,Author1,Author2,Author3,Author4,Author5,Author6) VALUES ('$Email','$PaperNo','$_POST[PaperTitle]','$FileName','$FileURL2','$_POST[Author1]','$_POST[Author2]','$_POST[Author3]','$_POST[Author4]','$_POST[Author5]','$_POST[Author6]')");
+									mysql_query("INSERT INTO SUBMIT(Email,PaperNo,PaperTitle,FileName,FileURL,Author1,Author2,Author3,Author4,Author5,Author6) VALUES ('$Email','$PaperNo','$_POST[PaperTitle]','$FileName','$FileURL','$_POST[Author1]','$_POST[Author2]','$_POST[Author3]','$_POST[Author4]','$_POST[Author5]','$_POST[Author6]')");
 									echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 								}
 				
@@ -209,4 +196,4 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>
-</html>
+</html> 
