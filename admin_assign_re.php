@@ -108,6 +108,7 @@
 			<?php
 				if (isset($_POST['assign'])){
 					mysql_query("INSERT INTO PAPER_ASSIGN(PaperNo,Email_Re) VALUES ('$PaperNo','$_POST[Email]')");
+					echo '<meta http-equiv="refresh" content="0 ; url=./admin_main.php">';
 				}
 			?>
 			<p  style="color:white">_</p>
