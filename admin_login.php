@@ -86,7 +86,7 @@
 						$Email = "$_POST[Email]";
 						$Password = "$_POST[Password]";
 
-						if($Email == 'admin' && $Password == '0000'){
+						if($Email == 'iclin@nchu.edu.tw' && $Password == 'iclin00' || $Email == 'taiwanmt@ms24.hinet.net' && $Password == 'tai24wan'){
 							$_SESSION['Email'] = $Email;
 							echo '<meta http-equiv=REFRESH CONTENT=0;url=admin_main.php>';
 						}
