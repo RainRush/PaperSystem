@@ -121,7 +121,7 @@
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
 							echo '<td>
-								<button type="submit" class="btn btn-default">刪除</button>
+								<button type="submit" class="btn btn-default" name="delete">刪除</button>
 								</td>';
 							echo '</tr>';
 						}

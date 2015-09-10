@@ -76,9 +76,9 @@
 	<div class="row">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-4">
 		<p style="color:white">_<br>_<br>_<br>_<br>_<br>_</p>
-		<form class="form-horizontal" role="form" id= "form1" name= "form1" method= "post" enctype="multipart/form-data">
+		<form class="form-horizontal" role="form" method= "post" enctype="multipart/form-data">
 			<p class="lead">
 				分配論文編號
 				<?php 
@@ -89,12 +89,6 @@
 				給：
 			</p> 
 			<?php
-				$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
-				mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
-				mysql_query(" set names utf8 ");
-				mysql_query(" SET CHARACTER SET  'UTF8 '; ");
-				mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
-				mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
 				$data = mysql_query("SELECT * FROM USER_INFO WHERE Role = 'Reviewer'");
 				$CountNo = mysql_num_rows($data);
 				
@@ -117,6 +111,48 @@
 			</button>
 		</form>
 		</div>
+		<div class="col-md-4">
+			<p style="color:white">_<br>_<br>_<br>_<br>_<br>_</p>
+			<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								目前分配
+							</th>
+							<th>
+								操作
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							$GetEmail = mysql_query("SELECT * FROM PAPER_ASSIGN WHERE PaperNo = '$PaperNo'");
+							$CountNo1 = mysql_num_rows($GetEmail);
+							for($j=0;$j<($CountNo1);$j++){	
+								$ls = mysql_fetch_row($GetEmail);
+								$data = mysql_query("SELECT * FROM USER_INFO WHERE Email = '$ls[1]'");
+								$CountNo = mysql_num_rows($data);
+								for($i=0; $i<($CountNo);$i++){
+									$rs = mysql_fetch_row($data);
+									$rs1 = mysql_fetch_row($result1);
+									echo '<tr class="default">';
+									echo '<td>' . $rs[1] . '</td>';
+									echo '<td> <button type="submit" class="btn btn-default" name="delete">收回此分配</button> </td>';
+									echo '</tr>';
+								}
+							}
+						?>
+					</tbody>
+				</table>
+			</form>	
+		</div>
+		<?php
+			if(isset($_POST['delete'])){
+				mysql_query("DELETE FROM PAPER_ASSIGN WHERE PaperNo = '$PaperNo' AND Email_Re = '$rs[0]'");
+				echo '<meta http-equiv="refresh" content="0 ; url=./admin_paperlist.php">';
+			}
+		?>
 		<div class="col-md-2">
 		</div>
 	</div>
