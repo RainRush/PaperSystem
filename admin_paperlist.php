@@ -110,6 +110,8 @@
 
 						for($i=0; $i<($CountNo);$i++){
 							$rs = mysql_fetch_row($data);
+							$FileName = $rs[3];
+							$FileURL = $rs[4];
 							echo '<tr class="default">';
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
@@ -117,7 +119,8 @@
 							echo ('<td>
 								<a type="button" class="btn btn-default" href="admin_assign_re.php?PaperNo='.$rs[1].'">分配</a>
 								<button type="submit" class="btn btn-default">給評</button>
-								</td>');
+								<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>
+								檔名：'.$FileName.'	</td>');
 							echo '</tr>';
 						}
 					?>

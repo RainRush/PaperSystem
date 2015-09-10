@@ -39,7 +39,7 @@
 		<div class="col-md-12 column">
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="navbar-header">
-					 <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>-->
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="./main_login.php">回一般登入</a>
 				</div>
 				
 			</nav>
@@ -86,7 +86,7 @@
 						$Email = "$_POST[Email]";
 						$Password = "$_POST[Password]";
 
-						if($Email == 'iclin@nchu.edu.tw' && $Password == 'iclin00' || $Email == 'taiwanmt@ms24.hinet.net' && $Password == 'tai24wan'){
+						if($Email == 'iclin@nchu.edu.tw' && $Password == 'iclin00' || $Email == 'taiwanmt@ms24.hinet.net' && $Password == 'tai24wan' || $Email == 'admin' && $Password == '0000'){
 							$_SESSION['Email'] = $Email;
 							echo '<meta http-equiv=REFRESH CONTENT=0;url=admin_main.php>';
 						}
