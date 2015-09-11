@@ -84,6 +84,7 @@
 	<div class="row">
 		<div class="col-md-1">
 		</div>
+		
 		<div class="col-md-5" align="center">
 			<h3 class="text-center">
 				使用者管理
@@ -91,6 +92,7 @@
 			<h3 class="text-muted">
 				審查者兼投稿者
 			</h3>
+			<form class="form-horizontal" role="form" method= "post" enctype="multipart/form-data">
 			<table class="table">
 				<thead>
 					<tr>
@@ -102,9 +104,6 @@
 						</th>
 						<th>
 							單位
-						</th>
-						<th>
-							操作
 						</th>
 					</tr>
 				</thead>
@@ -120,14 +119,12 @@
 							echo '<td>' . $rs[0] . '</td>';
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
-							echo '<td>
-								<button type="submit" class="btn btn-default" name="delete">刪除</button>
-								</td>';
 							echo '</tr>';
 						}
 					?>
 				</tbody>
 			</table>
+			</form>
 				<a href="./admin_regi_review.php" class="btn" type="button">新增審查者</a>
 			<h3 class="text-muted">
 				投稿者
@@ -137,6 +134,7 @@
 				投稿者完整資料
 			</a>
 		</div>
+		
 		<div class="col-md-5" align="center">
 			<h3 class="text-center">
 				論文管理

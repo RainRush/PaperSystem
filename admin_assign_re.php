@@ -120,9 +120,6 @@
 							<th>
 								目前分配
 							</th>
-							<th>
-								操作
-							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -138,7 +135,6 @@
 									$rs1 = mysql_fetch_row($result1);
 									echo '<tr class="default">';
 									echo '<td>' . $rs[1] . '</td>';
-									echo '<td> <button type="submit" class="btn btn-default" name="delete">收回此分配</button> </td>';
 									echo '</tr>';
 								}
 							}
@@ -147,12 +143,6 @@
 				</table>
 			</form>	
 		</div>
-		<?php
-			if(isset($_POST['delete'])){
-				mysql_query("DELETE FROM PAPER_ASSIGN WHERE PaperNo = '$PaperNo' AND Email_Re = '$rs[0]'");
-				echo '<meta http-equiv="refresh" content="0 ; url=./admin_paperlist.php">';
-			}
-		?>
 		<div class="col-md-2">
 		</div>
 	</div>

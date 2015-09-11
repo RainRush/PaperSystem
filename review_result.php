@@ -92,9 +92,9 @@
 			<h3>結果</h3>
 			<select name="Result">
 				<option></option>
-				<option value="通過">通過</option>
-				<option value="需修改">需修改</option>
-				<option value="拒絕">拒絕</option>
+				<option value="pass">通過</option>
+				<option value="need to update">需修改</option>
+				<option value="reject">拒絕</option>
 			</select>
 			<p style="color:white">_<br>_</p>
 			<button type="submit" class="btn btn-default" name="assign">提交</button>
