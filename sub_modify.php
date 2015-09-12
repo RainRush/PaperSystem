@@ -244,6 +244,7 @@
 					mysql_query("UPDATE SUBMIT SET Author4 = '$_POST[Author4]' WHERE PaperNo = '$PaperNo'");
 					mysql_query("UPDATE SUBMIT SET Author5 = '$_POST[Author5]' WHERE PaperNo = '$PaperNo'");
 					mysql_query("UPDATE SUBMIT SET Author6 = '$_POST[Author6]' WHERE PaperNo = '$PaperNo'");
+					mysql_query("UPDATE SUBMIT SET Status = '1' WHERE PaperNo = '$PaperNo'");
 					echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 				}
 				else if (isset($_POST['back']))

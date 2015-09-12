@@ -125,7 +125,8 @@
 				</tbody>
 			</table>
 			</form>
-				<a href="./admin_regi_review.php" class="btn" type="button">新增審查者</a>
+				<!--<a href="./admin_regi_review.php" class="btn" type="button">新增審查者</a>-->
+				<a href="./admin_main.php" class="btn" type="button">暫無法新增審查者</a>
 			<h3 class="text-muted">
 				投稿者
 			</h3>
@@ -141,7 +142,7 @@
 			</h3>
 			<br>
 			<a type="button" class="btn btn-default" href="admin_paperlist.php">
-				論文清單及分配
+				論文清單及給評
 			</a>
 		</div>
 		<div class="col-md-1">
