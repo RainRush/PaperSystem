@@ -106,16 +106,24 @@
 						mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
 						$data = mysql_query("SELECT * FROM SUBMIT");
 						$CountNo = mysql_num_rows($data);
-						//if($CountNo>5){$CountNo=5;};						
+						$AssignData = mysql_query("SELECT * FROM PAPER_ASSIGN");
 
 						for($i=0; $i<($CountNo);$i++){
 							$rs = mysql_fetch_row($data);
+							$rs1 = mysql_fetch_row($AssignData);
+							$CheckAssign = mysql_query("SELECT * FROM SUBMIT WHERE PaperNo == $rs1[0]");
+							$ca = mysql_num_rows($CheckAssign);
 							$FileName = $rs[3];
 							$FileURL = $rs[4];
 							echo '<tr class="default">';
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
-							echo '<td>success</td>' ;
+							
+							if ($ca == 0){
+								echo '<td>未分配</td>';
+							}
+							else
+								echo '<td>已分配</td>';
 							echo ('<td>
 								<a type="button" class="btn btn-default" href="admin_assign_re.php?PaperNo='.$rs[1].'">分配</a>
 								<button type="submit" class="btn btn-default">給評</button>
