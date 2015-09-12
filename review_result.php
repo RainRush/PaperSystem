@@ -101,14 +101,10 @@
 		</form>
 		<?php
 			if(isset($_POST['assign'])){
-				$conn = mysql_connect("localhost", "dan3388d", "dan3388d@ic@sql");
-				mysql_select_db("dan3388d") or die("Unable to connect to the server. Please try again later.");
-				mysql_query(" set names utf8 ");
-				mysql_query(" SET CHARACTER SET  'UTF8 '; ");
-				mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
-				mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
 				$PaperNo = $_SESSION['PaperNo'];
-				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]')"); //test
+				$Email = $_SESSION['Email'];
+				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice,Re_Email) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]','$Email')"); //test
+				echo '<meta http-equiv="refresh" content="0 ; url=./review_main.php">';
 			}
 		?>
 		</div>

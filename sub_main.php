@@ -131,7 +131,12 @@
 							echo '<td>' . $rs[2] . '</td>';
 							echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '<p style="display:inline"> , </p>' . $rs[8] . '<p style="display:inline"> , </p>' . $rs[9] .  '<p style="display:inline"> , </p>' . $rs[10] . '</td>';
 							if($rs1[2] != NULL){
-								echo '<td>' . $rs1[1] .'</td>';
+								if($rs1[1]=='pass')
+									echo '<td class="success">通過</td>';
+								else if($rs1[1]=='need to update')
+									echo '<td class="warning">需修改</td>';
+								else if($rs1[1]=='reject')
+									echo '<td class="danger">拒絕</td>';
 							}	
 							else{echo '<td>待評</td>';}
 							//echo '<td>待評</td>';
