@@ -108,7 +108,7 @@
 				mysql_query('SET CHARACTER_SET_CLIENT=UTF8; ');
 				mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
 				$PaperNo = $_SESSION['PaperNo'];
-				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]')");
+				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]')"); //test
 			}
 		?>
 		</div>
