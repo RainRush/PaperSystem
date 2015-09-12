@@ -137,7 +137,7 @@
 									echo '<td class="warning">需修改</td>';
 								else if($rs1[1]=='reject')
 									echo '<td class="danger">拒絕</td>';
-							}	
+							}
 							else{echo '<td>待評</td>';}
 							//echo '<td>待評</td>';
 							echo '<td>

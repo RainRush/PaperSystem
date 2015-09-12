@@ -92,9 +92,9 @@
 			<h3>結果</h3>
 			<select name="Result">
 				<option></option>
-				<option value="pass">通過</option>
-				<option value="need to update">需修改</option>
-				<option value="reject">拒絕</option>
+				<option value="1">通過</option>
+				<option value="2">需修改</option>
+				<option value="3">拒絕</option>
 			</select>
 			<p style="color:white">_<br>_</p>
 			<button type="submit" class="btn btn-default" name="assign">提交</button>
@@ -103,7 +103,16 @@
 			if(isset($_POST['assign'])){
 				$PaperNo = $_SESSION['PaperNo'];
 				$Email = $_SESSION['Email'];
-				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice,Re_Email) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]','$Email')"); //test
+				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice,Re_Email) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]','$Email')");
+				if ($_POST['Result']=='1'){
+					
+				}
+				else if ($_POST['Result']=='2'){
+
+				}
+				else{
+
+				}
 				echo '<meta http-equiv="refresh" content="0 ; url=./review_main.php">';
 			}
 		?>

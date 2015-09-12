@@ -102,6 +102,9 @@
 			<?php
 				if (isset($_POST['assign'])){
 					mysql_query("INSERT INTO PAPER_ASSIGN(PaperNo,Email_Re) VALUES ('$PaperNo','$_POST[Email]')");
+					mysql_query("UPDATE SUMMIT SET Status_Sub = '2' WHERE PaperNo = '$PaperNo'");
+					mysql_query("UPDATE SUMMIT SET Status_Re = '1' WHERE PaperNo = '$PaperNo'");
+					mysql_query("UPDATE SUMMIT SET Status_Ad = '2' WHERE PaperNo = '$PaperNo'");
 					echo '<meta http-equiv="refresh" content="0 ; url=./admin_main.php">';
 				}
 			?>

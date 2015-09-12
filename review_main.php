@@ -81,7 +81,8 @@
 			<h1 class="text-center">
 				審查者主頁
 			</h1> 
-			<table class="table table-bordered">
+			<p>功能暫不開放</p>
+			<!--<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>
@@ -142,9 +143,9 @@
 							}
 						}
 					?>
-					<!--active,success,warning,danger-->
+					active,success,warning,danger
 				</tbody>
-			</table>
+			</table>-->
 		</div>
 		<div class="col-md-2">
 		</div>
