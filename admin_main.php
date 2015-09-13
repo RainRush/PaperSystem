@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); ?>	<!--version 1.0, by H.Y.Hu-->
 <!DOCTYPE html>
 <html lang="en">
   <head><script type="text/javascript" src="/44028BD508DB4F66B4F61BBB0E6DF1D8/97A31538-E8BA-7845-A138-6A5951FF0B7B/main.js" charset="UTF-8"></script>

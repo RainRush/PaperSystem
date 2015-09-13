@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	<!--version 1.0, by H.Y.Hu-->
 <html lang="en">
   <head><script type="text/javascript" src="/44028BD508DB4F66B4F61BBB0E6DF1D8/0D227E70-DCB0-EA4B-826B-40D0634A0024/main.js" charset="UTF-8"></script>
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
 
   </head>
  <body>
-
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
