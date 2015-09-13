@@ -87,7 +87,7 @@
 			<h3 class="text-center">
 				使用者管理
 			</h3>
-			<h3 class="text-muted">
+			<!--<h3 class="text-muted">
 				審查者兼投稿者
 			</h3>
 			<form class="form-horizontal" role="form" method= "post" enctype="multipart/form-data">
@@ -123,8 +123,8 @@
 				</tbody>
 			</table>
 			</form>
-				<!--<a href="./admin_regi_review.php" class="btn" type="button">新增審查者</a>-->
-				<a href="./admin_main.php" class="btn" type="button">暫無法新增審查者</a>
+				<a href="./admin_regi_review.php" class="btn" type="button">新增審查者</a>
+				<a href="./admin_main.php" class="btn" type="button">暫無法新增審查者</a>-->
 			<h3 class="text-muted">
 				投稿者
 			</h3>

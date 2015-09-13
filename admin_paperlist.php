@@ -88,6 +88,9 @@
 							論文名稱
 						</th>
 						<th>
+							論文作者
+						</th>
+						<th>
 							論文狀態
 						</th>
 						<th>
@@ -113,16 +116,20 @@
 							echo '<tr class="default">';
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
+							echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '<p style="display:inline"> , </p>' . $rs[8] . '<p style="display:inline"> , </p>' . $rs[9] .  '<p style="display:inline"> , </p>' . $rs[10] . '</td>';
 							if($rs[11]=='1')
-								echo '<td>待給評</td>';
+								echo '<td class="active">待給評</td>';
 							else if($rs[11]=='2')
-								echo '<td>通過</td>';
+								echo '<td class="success">通過</td>';
 							else if($rs[11]=='3')
-								echo '<td>需修改</td>';
+								echo '<td class="warning">需修改</td>';
 							else if($rs[11]=='4')
-								echo '<td>拒絕</td>';
+								echo '<td class="danger">拒絕</td>';
+							else if($rs[11]=='5')
+								echo '<td class="info">已修改</td>';
 							echo ('<td>
-								<a type="button" class="btn btn-default" href="admin_result.php?PaperNo='.$rs[1].'">給評</a>
+								<a type="button" class="btn btn-default" href="./full_result.php?PaperNo='.$rs[1].'">意見</a>
+								<a type="button" class="btn btn-default" href="./admin_result.php?PaperNo='.$rs[1].'">給評</a>
 								<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>
 								檔名：'.$FileName.'	</td>');
 							echo '</tr>';

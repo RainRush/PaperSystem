@@ -3,7 +3,7 @@
 <html lang="en">
 <head><script type="text/javascript" src="/44028BD508DB4F66B4F61BBB0E6DF1D8/962035AB-A312-FC4C-A469-EAA8B2C1E89B/main.js" charset="UTF-8"></script>
   <meta charset="utf-8">
-  <title>論文投稿系統</title><!--投稿者登入-->
+  <title>論文投稿系統</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">

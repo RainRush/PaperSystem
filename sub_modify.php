@@ -43,7 +43,12 @@
 									mysql_query('SET CHARACTER_SET_RESULTS=UTF8; ');
 						 			$GetName = mysql_query("SELECT * FROM USER_INFO WHERE Email = '$Email'");
 						 			$ls = mysql_fetch_row($GetName);
-						 			echo "<font color=\"WHITE\">".$ls[1]."</font>"; 
+						 			echo "<font color=\"WHITE\">".$ls[1]."</font>";
+						 			$PaperNo = $_GET['PaperNo'];
+						 			$CheckPaper = mysql_query("SELECT * FROM SUBMIT WHERE PaperNo = '$PaperNo'");
+						 			$fs = mysql_fetch_row($CheckPaper);
+						 			if($Email != $fs[0])
+						 				echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 						 		}
 						 		else{
 						 			echo '<meta http-equiv="refresh" content="0 ; url=./main_login.php">';
@@ -229,7 +234,7 @@
 						$FileURL = 'upload/'.session_id().'_'. time().'.'.pathinfo($_FILES['File']['name'],PATHINFO_EXTENSION);
 						mysql_query("UPDATE SUBMIT SET FileName = '$FileName' WHERE PaperNo = '$PaperNo'");
 						mysql_query("UPDATE SUBMIT SET FileURL = '$FileURL' WHERE PaperNo = '$PaperNo'");
-						mysql_query("UPDATE SUBMIT SET Status = '1' WHERE PaperNo = '$PaperNo'");
+						mysql_query("UPDATE SUBMIT SET Status = '5' WHERE PaperNo = '$PaperNo'");
 						/*echo $_FILES['File']['name'];
 						echo '<p>?!</p>';
 						echo $FileName; 

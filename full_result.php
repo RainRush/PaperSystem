@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>投稿者主頁</title>
+    <title>意見</title>
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
@@ -24,7 +24,7 @@
 					 
 					<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button>--> <a class="navbar-brand" href="./sub_main.php">主頁</a>
+					</button>--> 
 					<?php
 						if ($_SESSION['Email'] != NULL){
 						 	$Email = $_SESSION['Email'];
@@ -37,10 +37,18 @@
 							$GetName = mysql_query("SELECT * FROM USER_INFO WHERE Email = '$Email'");
 							$ls = mysql_fetch_row($GetName);
 							$Role = $ls[6];
-							/*if($Role == 'Reviewer'){
-								echo '<a class="navbar-brand" href="./review_main.php">回審查者主頁</a>';
-						 	}*/
+							$PaperNo = $_GET['PaperNo'];
+						 	$CheckPaper = mysql_query("SELECT * FROM SUBMIT WHERE PaperNo = '$PaperNo'");
+						 	$fs = mysql_fetch_row($CheckPaper);
+						 	if($Email == $fs[0] || $ls[6] == 'admin')
+						 		;
+						 	else
+						 		echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 						 }
+						 if($Role=='admin')
+						 	echo '<a class="navbar-brand" href="./admin_paperlist.php">回主頁</a>';
+						 else
+						 	echo '<a class="navbar-brand" href="./sub_main.php">回主頁</a>';
 					?>
 				</div>
 				
@@ -87,70 +95,34 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<p style="color:white">_<br>_<br>_<br>_<br>_<br>_</p>
 			<h1 class="text-center">
-				投稿者主頁
-			</h1> 
-			
+				論文<?php 
+				$PaperNo = $_GET['PaperNo']; 
+				echo $PaperNo;
+				$_SESSION['PaperNo'] = $PaperNo;
+				?> 的意見
+			</h1>
+			<p style="color:white">_<br>_</p>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>
-							論文編號
-						</th>
-						<th>
-							論文名稱
-						</th>
-						<th>
-							論文作者
-						</th>
-						<th>
-							狀態
-						</th>
-						<th>
-							操作
+							意見
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php
-						$data = mysql_query("SELECT * FROM SUBMIT WHERE Email = '$Email'");
-						$CountNo = mysql_num_rows($data);
-
-						for($i=0; $i<($CountNo);$i++){
+					<td>
+						<?php
+							$data = mysql_query("SELECT * FROM SUBMIT WHERE PaperNo = '$PaperNo'");
 							$rs = mysql_fetch_row($data);
-							$FileName = $rs[3];
-							$FileURL = $rs[4];
-							echo '<tr class="default">';
-							echo '<td>' . $rs[1] . '</td>';
-							echo '<td>' . $rs[2] . '</td>';
-							echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '<p style="display:inline"> , </p>' . $rs[8] . '<p style="display:inline"> , </p>' . $rs[9] .  '<p style="display:inline"> , </p>' . $rs[10] . '</td>';
-							if($rs[11]=='1'||$rs[11]=='5')
-								echo '<td class="active">上傳成功</td>';
-							else if($rs[11]=='2')
-								echo '<td class="success">通過</td>';
-							else if($rs[11]=='3')
-								echo '<td class="warning">需修改</td>';
-							else if($rs[11]=='4')
-								echo '<td class="danger">拒絕</td>';
-							echo '<td>
-								<a type="button" class="btn btn-default" href="./full_result.php?PaperNo='.$rs[1].'">意見</a>
-								<a type="button" class="btn btn-default" href="./sub_modify.php?PaperNo='.$rs[1].'">更新論文</a>
-								<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>
-								檔名：'.$FileName.'</td>';
-							echo '</tr>';
-
-						}
-					?>
-					<!--active,success,warning,danger-->
+							echo '<p class="text-center">' .$rs[12]. '</p>';
+						?>
+					</td>
 				</tbody>
 			</table>
-			<a href="./sub_add.php" class="btn btn-link btn-default" type="button">新增投稿</a>
-		</div>
-		<div class="col-md-2">
 		</div>
 	</div>
 </div>
