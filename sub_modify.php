@@ -229,10 +229,11 @@
 						$FileURL = 'upload/'.session_id().'_'. time().'.'.pathinfo($_FILES['File']['name'],PATHINFO_EXTENSION);
 						mysql_query("UPDATE SUBMIT SET FileName = '$FileName' WHERE PaperNo = '$PaperNo'");
 						mysql_query("UPDATE SUBMIT SET FileURL = '$FileURL' WHERE PaperNo = '$PaperNo'");
-						echo $_FILES['File']['name'];
+						mysql_query("UPDATE SUBMIT SET Status = '1' WHERE PaperNo = '$PaperNo'");
+						/*echo $_FILES['File']['name'];
 						echo '<p>?!</p>';
 						echo $FileName; 
-						echo "<p>!!</p>";
+						echo "<p>!!</p>";*/
 						echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 					}
 				}
@@ -244,7 +245,6 @@
 					mysql_query("UPDATE SUBMIT SET Author4 = '$_POST[Author4]' WHERE PaperNo = '$PaperNo'");
 					mysql_query("UPDATE SUBMIT SET Author5 = '$_POST[Author5]' WHERE PaperNo = '$PaperNo'");
 					mysql_query("UPDATE SUBMIT SET Author6 = '$_POST[Author6]' WHERE PaperNo = '$PaperNo'");
-					mysql_query("UPDATE SUBMIT SET Status = '1' WHERE PaperNo = '$PaperNo'");
 					echo '<meta http-equiv="refresh" content="0 ; url=./sub_main.php">';
 				}
 				else if (isset($_POST['back']))

@@ -119,27 +119,23 @@
 					<?php
 						$data = mysql_query("SELECT * FROM SUBMIT WHERE Email = '$Email'");
 						$CountNo = mysql_num_rows($data);
-						$result1 = mysql_query("SELECT * FROM REVIEW");
 
 						for($i=0; $i<($CountNo);$i++){
 							$rs = mysql_fetch_row($data);
-							$rs1 = mysql_fetch_row($result1);
 							$FileName = $rs[3];
 							$FileURL = $rs[4];
 							echo '<tr class="default">';
 							echo '<td>' . $rs[1] . '</td>';
 							echo '<td>' . $rs[2] . '</td>';
 							echo '<td>' . $rs[5] . '<p style="display:inline"> , </p>' . $rs[6] . '<p style="display:inline"> , </p>' . $rs[7] . '<p style="display:inline"> , </p>' . $rs[8] . '<p style="display:inline"> , </p>' . $rs[9] .  '<p style="display:inline"> , </p>' . $rs[10] . '</td>';
-							if($rs1[2] != NULL){
-								if($rs1[1]=='pass')
-									echo '<td class="success">通過</td>';
-								else if($rs1[1]=='need to update')
-									echo '<td class="warning">需修改</td>';
-								else if($rs1[1]=='reject')
-									echo '<td class="danger">拒絕</td>';
-							}
-							else{echo '<td>待評</td>';}
-							//echo '<td>待評</td>';
+							if($rs[11]=='1')
+								echo '<td class="active">上傳成功</td>';
+							else if($rs[11]=='2')
+								echo '<td class="success">通過</td>';
+							else if($rs[11]=='3')
+								echo '<td class="warning">需修改</td>';
+							else if($rs[11]=='4')
+								echo '<td class="danger">拒絕</td>';
 							echo '<td>
 								<a type="button" class="btn btn-default" href="./sub_modify.php?PaperNo='.$rs[1].'">更新論文</a>
 								<a type="button" class="btn btn-default" href="http://140.120.54.230/dan3388d/sys/'.$FileURL.'">下載論文</a>

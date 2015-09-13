@@ -28,8 +28,6 @@
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a>
@@ -102,8 +100,18 @@
 		<?php
 			if(isset($_POST['assign'])){
 				$PaperNo = $_SESSION['PaperNo'];
-				$Email = $_SESSION['Email'];
-				mysql_query("INSERT INTO REVIEW(PaperNo,Result,Advice,Re_Email) VALUES ('$PaperNo','$_POST[Result]','$_POST[Advice]','$Email')");
+				$Result = $_POST['Result'];
+				$Advice = $_POST['Advice'];
+				if($Result==1){
+					mysql_query("UPDATE SUBMIT SET STATUS = '2' WHERE PaperNo = '$PaperNo'");
+				}
+				else if($Result==2){
+					mysql_query("UPDATE SUBMIT SET STATUS = '3' WHERE PaperNo = '$PaperNo'");
+				}
+				else if($Result==3){
+					mysql_query("UPDATE SUBMIT SET STATUS = '4' WHERE PaperNo = '$PaperNo'");
+				}
+				mysql_query("UPDATE SUBMIT SET Advice = '$Advice' WHERE PaperNo = '$PaperNo'");
 				echo '<meta http-equiv="refresh" content="0 ; url=./admin_paperlist.php">';
 			}
 		?>
