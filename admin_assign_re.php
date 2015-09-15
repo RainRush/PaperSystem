@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); ?>	<!--ver 0.9.9, by H.Y.Hu-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
